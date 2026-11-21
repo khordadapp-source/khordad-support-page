@@ -6,22 +6,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101c35">
 <title>حمایت از خرداد</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
-  font-family:Tahoma,Arial,sans-serif;
+  font-family:'Vazirmatn',Tahoma,sans-serif;
   background:#f3f6fc;
   color:#17233d;
 }
+
 header{
-  background:#101c35;
+  background:linear-gradient(135deg,#101c35,#193b69);
   color:white;
   text-align:center;
   padding:38px 18px 55px;
 }
+
 .logo{
-  width:68px;height:68px;
+  width:68px;
+  height:68px;
   margin:auto auto 15px;
   border-radius:22px;
   background:#fff;
@@ -29,33 +38,53 @@ header{
   display:grid;
   place-items:center;
   font-size:34px;
-  font-weight:bold;
+  font-weight:800;
 }
-header h1{margin:8px 0;font-size:27px}
-header p{color:#d1dced;font-size:14px;line-height:2}
+
+header h1{
+  margin:8px 0;
+  font-size:27px;
+  font-weight:800;
+}
+
+header p{
+  color:#d1dced;
+  font-size:14px;
+  line-height:2;
+}
+
 main{
   max-width:520px;
   margin:-28px auto 30px;
   padding:0 16px;
 }
+
 .panel{
   background:white;
   border-radius:20px;
   padding:23px 18px;
   box-shadow:0 8px 30px #17233d12;
 }
-h2{font-size:19px;margin:0 0 10px}
+
+h2{
+  font-size:19px;
+  font-weight:700;
+  margin:0 0 10px;
+}
+
 .description{
   color:#778399;
   font-size:13px;
   line-height:2;
   margin-bottom:20px;
 }
+
 .amounts{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .amount{
   background:#fff;
   border:2px solid #e5eaf3;
@@ -66,15 +95,27 @@ h2{font-size:19px;margin:0 0 10px}
   font-family:inherit;
   transition:.2s;
 }
+
 .amount.selected{
   border-color:#1676d2;
   background:#edf6ff;
 }
-.amount strong{display:block;font-size:19px}
-.amount span{font-size:12px;color:#78869a}
+
+.amount strong{
+  display:block;
+  font-size:18px;
+  font-weight:700;
+}
+
+.amount span{
+  font-size:12px;
+  color:#78869a;
+}
+
 .amount:focus-visible{
   outline:3px solid #8dc5ff;
 }
+
 #continue{
   width:100%;
   border:0;
@@ -85,10 +126,15 @@ h2{font-size:19px;margin:0 0 10px}
   color:white;
   font-family:inherit;
   font-size:16px;
-  font-weight:bold;
+  font-weight:700;
   cursor:pointer;
 }
-#continue:disabled{opacity:.5;cursor:not-allowed}
+
+#continue:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
 .note{
   text-align:center;
   color:#8a95a7;
@@ -96,60 +142,141 @@ h2{font-size:19px;margin:0 0 10px}
   line-height:2;
   margin-top:17px;
 }
+
 footer{
   text-align:center;
   color:#929bad;
   font-size:12px;
   padding:10px 15px 30px;
 }
+
+#result{
+  display:none;
+  text-align:center;
+  padding:12px 4px;
+}
+
+.result-icon{
+  font-size:54px;
+  margin-bottom:12px;
+}
+
+#result h2{
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+#result p{
+  color:#778399;
+  font-size:14px;
+  line-height:2;
+}
+
+#return-app{
+  display:block;
+  margin-top:22px;
+  padding:15px;
+  background:#1676d2;
+  color:white;
+  border-radius:13px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+#retry{
+  display:block;
+  margin-top:12px;
+  color:#1676d2;
+  text-decoration:none;
+  font-size:13px;
+}
+
+#message{
+  display:none;
+  color:#b45309;
+  background:#fff7ed;
+  padding:12px;
+  border-radius:10px;
+  font-size:13px;
+  line-height:2;
+  margin-top:15px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="logo">خ</div>
   <h1>حمایت از خرداد ❤️</h1>
-  <p>خرداد با همراهی شما زنده و پویا می‌ماند.<br>
-  اگر به این مسیر علاقه‌مندید، همراه ما باشید.</p>
+  <p>
+    خرداد با همراهی شما زنده و پویا می‌ماند.<br>
+    اگر به این مسیر علاقه‌مندید، همراه ما باشید.
+  </p>
 </header>
 
 <main>
   <section class="panel">
-    <h2>مبلغ حمایت خود را انتخاب کنید</h2>
-    <div class="description">
-      هر میزان حمایت شما، قدمی برای توسعه و بهبود خرداد است.
+
+    <div id="payment-section">
+      <h2>مبلغ حمایت خود را انتخاب کنید</h2>
+
+      <div class="description">
+        هر میزان حمایت شما، قدمی برای توسعه و بهبود خرداد است.
+      </div>
+
+      <div class="amounts">
+
+        <button class="amount" data-amount="200000">
+          <strong>۲۰ هزار تومان</strong>
+          <span>حمایت از خرداد</span>
+        </button>
+
+        <button class="amount" data-amount="500000">
+          <strong>۵۰ هزار تومان</strong>
+          <span>حمایت از خرداد</span>
+        </button>
+
+        <button class="amount" data-amount="1000000">
+          <strong>۱۰۰ هزار تومان</strong>
+          <span>حمایت از خرداد</span>
+        </button>
+
+        <button class="amount" data-amount="2000000">
+          <strong>۲۰۰ هزار تومان</strong>
+          <span>حمایت از خرداد</span>
+        </button>
+
+      </div>
+
+      <button id="continue" disabled>
+        ابتدا مبلغ حمایت را انتخاب کنید
+      </button>
+
+      <div id="message"></div>
+
+      <div class="note">
+        پرداخت از طریق درگاه رسمی مایکت انجام خواهد شد.<br>
+        حمایت شما به توسعه و نگهداری خرداد کمک می‌کند.
+      </div>
     </div>
 
-    <div class="amounts">
-      <button class="amount" data-amount="200000">
-        <strong>۲۰ هزار تومان</strong>
-        <span>حمایت از خرداد</span>
-      </button>
+    <div id="result">
+      <div class="result-icon" id="result-icon">❤️</div>
+      <h2 id="result-title">در حال بررسی پرداخت...</h2>
+      <p id="result-text">
+        لطفاً چند لحظه منتظر بمانید.
+      </p>
 
-      <button class="amount" data-amount="500000">
-        <strong>۵۰ هزار تومان</strong>
-        <span>حمایت از خرداد</span>
-      </button>
+      <a id="return-app" href="khordad://payment/success" style="display:none">
+        بازگشت به برنامه خرداد
+      </a>
 
-      <button class="amount" data-amount="1000000">
-        <strong>۱۰۰ هزار تومان</strong>
-        <span>حمایت از خرداد</span>
-      </button>
-
-      <button class="amount" data-amount="2000000">
-        <strong>۲۰۰ هزار تومان</strong>
-        <span>حمایت از خرداد</span>
-      </button>
+      <a id="retry" href="./" style="display:none">
+        بازگشت به صفحه حمایت
+      </a>
     </div>
 
-    <button id="continue" disabled>
-      ابتدا مبلغ حمایت را انتخاب کنید
-    </button>
-
-    <div class="note">
-      پرداخت از طریق درگاه رسمی مایکت انجام خواهد شد.<br>
-      حمایت شما به توسعه و نگهداری خرداد کمک می‌کند.
-    </div>
   </section>
 </main>
 
@@ -158,26 +285,180 @@ footer{
 </footer>
 
 <script>
+const API = "https://khordad-support.khordadapp.workers.dev";
+
 let selectedAmount = null;
+let checking = false;
 
 const buttons = document.querySelectorAll(".amount");
 const continueButton = document.getElementById("continue");
+const messageBox = document.getElementById("message");
+
+const paymentSection = document.getElementById("payment-section");
+const resultSection = document.getElementById("result");
+
+const amountToSku = {
+  200000: "support_200000",
+  500000: "support_500000",
+  1000000: "support_1000000",
+  2000000: "support_2000000"
+};
+
+function showMessage(text) {
+  messageBox.textContent = text;
+  messageBox.style.display = "block";
+}
+
+function showResult(icon, title, text, showReturn, showRetry) {
+  paymentSection.style.display = "none";
+  resultSection.style.display = "block";
+
+  document.getElementById("result-icon").textContent = icon;
+  document.getElementById("result-title").textContent = title;
+  document.getElementById("result-text").textContent = text;
+
+  document.getElementById("return-app").style.display =
+    showReturn ? "block" : "none";
+
+  document.getElementById("retry").style.display =
+    showRetry ? "block" : "none";
+}
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     buttons.forEach(item => item.classList.remove("selected"));
+
     button.classList.add("selected");
 
     selectedAmount = Number(button.dataset.amount);
+
     continueButton.disabled = false;
     continueButton.textContent = "ادامه و پرداخت";
+
+    messageBox.style.display = "none";
   });
 });
 
-continueButton.addEventListener("click", () => {
-  if (!selectedAmount) return;
-  alert("مبلغ انتخاب‌شده: " + (selectedAmount / 10).toLocaleString("fa-IR") + " تومان\nاتصال درگاه پرداخت در مرحله بعد فعال می‌شود.");
+continueButton.addEventListener("click", async () => {
+  if (!selectedAmount || checking) return;
+
+  const skuId = amountToSku[selectedAmount];
+
+  if (!skuId) {
+    showMessage("مبلغ انتخاب‌شده معتبر نیست.");
+    return;
+  }
+
+  checking = true;
+  continueButton.disabled = true;
+  continueButton.textContent = "در حال اتصال به درگاه...";
+
+  messageBox.style.display = "none";
+
+  try {
+    const response = await fetch(API + "/api/support/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        skuId: skuId
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success || !data.checkoutUrl) {
+      throw new Error(data.error || "ایجاد سفارش ناموفق بود.");
+    }
+
+    window.location.href = data.checkoutUrl;
+
+  } catch (error) {
+    showMessage(
+      "اتصال به درگاه برقرار نشد. لطفاً دوباره تلاش کنید. " +
+      (error.message || "")
+    );
+
+    continueButton.disabled = false;
+    continueButton.textContent = "تلاش دوباره";
+    checking = false;
+  }
 });
+
+async function checkPayment(orderId) {
+  showResult(
+    "⏳",
+    "در حال بررسی پرداخت",
+    "لطفاً منتظر بمانید تا نتیجه پرداخت از مایکت تأیید شود.",
+    false,
+    false
+  );
+
+  for (let i = 0; i < 25; i++) {
+    try {
+      const response = await fetch(
+        API + "/api/support/status?order_id=" + encodeURIComponent(orderId),
+        { method: "GET", cache: "no-store" }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        if (data.status === "paid") {
+          showResult(
+            "🎉",
+            "حمایت شما با موفقیت ثبت شد!",
+            "از اینکه در مسیر توسعه خرداد کنار ما هستید، صمیمانه سپاسگزاریم ❤️",
+            true,
+            false
+          );
+          return;
+        }
+
+        if (data.status === "cancelled" || data.status === "failed") {
+          showResult(
+            "❌",
+            "پرداخت انجام نشد",
+            "سفارشی با وضعیت پرداخت ناموفق ثبت شده است.",
+            false,
+            true
+          );
+          return;
+        }
+      }
+
+    } catch (error) {
+      // در تلاش بعدی دوباره وضعیت بررسی می‌شود.
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 2500));
+  }
+
+  showResult(
+    "⏳",
+    "تأیید پرداخت هنوز دریافت نشده",
+    "هنوز نتیجه قطعی از سرور دریافت نشده است. لطفاً کمی بعد دوباره صفحه را بررسی کنید.",
+    false,
+    true
+  );
+}
+
+const params = new URLSearchParams(window.location.search);
+const orderId = params.get("order_id");
+const paymentStatus = params.get("payment");
+
+if (orderId && paymentStatus === "checking") {
+  checkPayment(orderId);
+} else if (paymentStatus === "cancelled") {
+  showResult(
+    "❌",
+    "پرداخت لغو شد",
+    "فرایند پرداخت تکمیل نشد. در صورت تمایل می‌توانید دوباره تلاش کنید.",
+    false,
+    true
+  );
+}
 </script>
 
 </body>
